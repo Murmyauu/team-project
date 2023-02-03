@@ -101,21 +101,6 @@ public class GameStoreTest {
     }
 
     @Test
-    public void shouldGetSumPlayedTime() {
-        GameStore store = new GameStore();
-
-        store.addPlayTime("Nina", 7);
-        store.addPlayTime("Anna", 3);
-        store.addPlayTime("Kolya", 6);
-        store.addPlayTime("Inna", 2);
-
-        int expected = 18;
-        int actual = store.getSumPlayedTime();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
     public void shouldReturnPlayedTimeByPlayerName() {
         GameStore store = new GameStore();
 
@@ -131,6 +116,21 @@ public class GameStoreTest {
 
         int expected = 28;
         int actual = store.playedTimeByName("Kolya");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetSumPlayedTime() {
+        GameStore store = new GameStore();
+
+        store.addPlayTime("Nina", 7);
+        store.addPlayTime("Anna", 3);
+        store.addPlayTime("Kolya", 6);
+        store.addPlayTime("Inna", 2);
+
+        int expected = 18;
+        int actual = store.getSumPlayedTime();
+
         assertEquals(expected, actual);
     }
 }
