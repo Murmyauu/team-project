@@ -38,22 +38,23 @@ public class PlayerTest {
      * // *Тест для нереализованного, но заявленного функционала по поиску информации о том,
      * // сколько суммарно часов сыграно в игру, по ключу Игра.
      */
-    //    @Test
-//    public void shouldReturnTotalHoursOfPlay() {
-//        GameStore store = new GameStore();
-//        Game game = store.publishGame("Нетология Баттл Онлайн", "Шутеры");
-//
-//        Player player = new Player("Katya");
-//        player.installGame(game);
-//
-//
-//        player.play(game, 5);
-//        player.play(game, 7);
-//
-//        int expected = 12;
-//        int actual = player.totalTime(game);  метод, который необходимо добавить в класс PLayer
-//        assertEquals(expected, actual);
-//    }
+    @Test
+    public void shouldReturnTotalHoursOfPlay() {
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Шутеры");
+
+        Player player = new Player("Katya");
+        player.installGame(game);
+
+
+        player.play(game, 5);
+        player.play(game, 7);
+
+        int expected = 12;
+        int actual = player.totalTime(game);
+        assertEquals(expected, actual);
+    }
+
     @Test
     public void shouldReturnAmountHoursByRepeatInstallGame() {
 

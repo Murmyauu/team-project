@@ -11,6 +11,9 @@ public class Player {
      * ключ - игра
      * значение - суммарное количество часов игры в эту игру
      */
+    public int totalTime (Game game) {
+      return playedTime.get(game);
+    }
     private final Map<Game, Integer> playedTime = new HashMap<>();
 
 
@@ -27,8 +30,12 @@ public class Player {
      * если игра уже была, никаких изменений происходить не должно
      */
     public void installGame(Game game) {
-        playedTime.put(game, 0);
-    }
+        if(playedTime.containsKey(game)) {
+            getName();
+        }else {
+            playedTime.put(game, 0);
+        }
+        }
 
     /**
      * Игрок играет в игру game на протяжении hours часов
