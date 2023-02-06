@@ -13,6 +13,11 @@ public class GameStore {
      * Ключ - имя игрока
      * Значение - суммарное количество часов в игры этого каталога
      */
+
+    public int playedTimeByName(String name) {
+        return playedTime.get(name);
+    }
+
     private Map<String, Integer> playedTime = new HashMap<>();
 
     /**
@@ -26,12 +31,12 @@ public class GameStore {
     }
 
     /**
-     * Проверяет наличие игры в каталоге и возврашает true
+     * Проверяет наличие игры в каталоге и возвращает true
      * если игра есть и false иначе
      */
     public boolean containsGame(Game game) {
-        for (int i = 1; i < games.size(); i++) {
-            if (games.get(i - 1).equals(game)) {
+        for (int i = 0; i < games.size(); i++) {
+            if (games.get(i).equals(game)) {
                 return true;
             }
         }
@@ -45,7 +50,7 @@ public class GameStore {
      */
     public void addPlayTime(String playerName, int hours) {
         if (playedTime.containsKey(playerName)) {
-            playedTime.put(playerName, playedTime.get(playerName));
+            playedTime.put(playerName, playedTime.get(playerName) + hours);
         } else {
             playedTime.put(playerName, hours);
         }
@@ -53,10 +58,10 @@ public class GameStore {
 
     /**
      * Ищет имя игрока, который играл в игры этого каталога больше всего
-     * времени. Если игроков нет, то возвращется null
+     * времени. Если игроков нет, то возвращается null
      */
     public String getMostPlayer() {
-        int mostTime = 1;
+        int mostTime = 0;
         String bestPlayer = null;
         for (String playerName : playedTime.keySet()) {
             int playerTime = playedTime.get(playerName);
@@ -73,6 +78,10 @@ public class GameStore {
      * за играми этого каталога
      */
     public int getSumPlayedTime() {
-        return 0;
+        int sumPlayedTime = 0;
+        for (String playerName : playedTime.keySet()) {
+            sumPlayedTime = sumPlayedTime + playedTime.get(playerName);
+        }
+        return sumPlayedTime;
     }
 }
